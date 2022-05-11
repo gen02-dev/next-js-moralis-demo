@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import { ConnectButton } from 'web3uikit'
 
-const Home: NextPage = () => {
+const App: NextPage = () => {
   return (
     <div className={styles.container}>
       <ConnectButton/>
@@ -10,4 +10,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default App
