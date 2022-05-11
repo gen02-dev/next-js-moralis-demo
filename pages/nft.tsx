@@ -18,7 +18,7 @@ const NFT = () => {
   return (
     <>
       <Header />
-      {result && result.address === account && result?.message}
+      {result && result.user === account?.toLowerCase() && result?.message}
       <p>Not so secret message</p>
     </>
   )
