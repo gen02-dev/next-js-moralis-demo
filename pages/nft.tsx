@@ -3,9 +3,15 @@ import Header from '../components/Header'
 import { getUserNFTs } from "../Services/Api"
 import { useEffect, useState } from "react"
 
+interface ResultData {
+  NFTFound?: true;
+  user?: string;
+  message?: string
+}
+
 const NFT = () => {
   const { user, account } = useMoralis()
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState<ResultData>({});
 
   useEffect(() => {
     if (user && account) {
@@ -18,7 +24,7 @@ const NFT = () => {
   return (
     <>
       <Header />
-      {result && result.user === account?.toLowerCase() && result?.message}
+      {result && result.NFTFound && result.user === account?.toLowerCase() && result?.message}
       <p>Not so secret message</p>
     </>
   )
