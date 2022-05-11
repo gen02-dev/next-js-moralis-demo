@@ -1,25 +1,25 @@
-import { NFTBalance } from 'web3uikit'
 import { useMoralis } from 'react-moralis'
 import Header from '../components/Header'
 import { getUserNFTs } from "../Services/Api"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const NFT = () => {
-  const { user } = useMoralis()
-  const ethAddress = user?.attributes.ethAddress
+  const { user, account } = useMoralis()
+  const [result, setResult] = useState({});
 
   useEffect(() => {
-    if (user) {
-      getUserNFTs(user?.get("sessionToken")).then((result) => {
-        console.log(result)
+    if (user && account) {
+      getUserNFTs(user?.get("sessionToken")).then((res) => {
+        setResult(res)
       })
     }
-  }, [user])
+  }, [user, account])
 
   return (
     <>
       <Header />
-      <NFTBalance address={ethAddress} chain="eth" />
+      {result && result.address === account && result?.message}
+      <p>Not so secret message</p>
     </>
   )
 }

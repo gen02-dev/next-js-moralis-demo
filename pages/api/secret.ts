@@ -22,8 +22,6 @@ export default async function handler(
       query.limit(1);
       const result = await query.find({ useMasterKey: true });
 
-      console.log("Testing", result);
-
       // Check whether user own certain NFT on MATIC
       if (result.length > 0) {
         const _address = result[0].get("user").get("accounts")[0];

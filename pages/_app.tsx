@@ -6,8 +6,9 @@ import RequireAuth from '../Services/Auth'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MoralisProvider
-      appId="pUWqcFMbs8vv6nNEHY8W3iwveCcYxeuoYqYsCpR8"
-      serverUrl="https://pmgjpmhhyupb.usemoralis.com:2053/server"
+      initializeOnMount
+      appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID ?? ""}
+      serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL ?? ""}
     >
       {
         // @ts-ignore
