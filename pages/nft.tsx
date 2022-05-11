@@ -6,14 +6,12 @@ import Header from '../components/header'
 const NFT = () => {
   const { user } = useMoralis()
   const ethAddress = user?.attributes.ethAddress
-  console.log('user---->', user?.attributes.ethAddress)
+
   return (
-      <>
-    {/* <RequireAuth> */}
+    <RequireAuth>
       <Header/>
       <NFTBalance address={ethAddress} chain="eth"/>
-    {/* </RequireAuth> */}
-    </>
+    </RequireAuth>
   )
 }
 
